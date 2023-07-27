@@ -1,24 +1,63 @@
 """
-    you can use comments for psudeo code
-    I mean structring the program before you write actual code
-
+    Hi , this is my first project 
+    a very simple python calculator
 """
+print("Hello, welcome to basic calculator in python")
 
-# Ask the user for their name
-name = input("What's your name? ")
+while True:
+    
+    # getting the inputs from the user
+    while True:
+        try:
+            num1 = float(input("Enter your first number: "))
+            num2 = float(input("Enter your second number: "))
+            op = str(input("Enter your operation (+, -, *, ^, /, //, %): "))
+        except ValueError:
+            print("Oops, something went wrong! Please try again.")
+        else:
+            break
 
-# Say hello to user
-print("Hello, " + name)
-print("Hello" , name) #it will add space automatically
+    # now doing the operation
+    if op == "+":
+        print(f"{num1} + {num2} = {num1+num2}")
+    elif op == "-":
+        print(f"{num1} - {num2} = {num1-num2}")
+    elif op == "*":
+        print(f"{num1} * {num2} = {num1*num2}")
+    elif op == "^":
+        print(f"{num1} ^ {num2} = {num1**num2}")
+    elif op == "/":
+        if num2 == 0:
+            print("Error: division by zero")
+        else:
+            print(f"{num1} / {num2} = {num1/num2}")
+    elif op == "//":
+        print(f"{num1} // {num2} = {num1//num2}")
+    elif op == "%":
+        print(f"{num1} % {num2} = {num1%num2}")
+    else:
+        print("You've entered the wrong operand!")
 
-print("hello", end=" ")# ends with a space not new line
-print(name)
+    # deciding to go over or exit the program
+    print("Do you want to do another calculation? (y/n)")
 
-print("hello" , name , sep="!!!!")# use !!!! instead of a space for seperator
+    try:
+        while True:
+            flag = str(input())
+            if flag == "y":
+                first_loop_flag = False
+                break
+            elif flag == "n":
+                first_loop_flag = True
+                break
+            else:
+                print("Invalid input. Please enter 'y' or 'n'.")
+    except Exception:
+        print("Error, exiting the program...")
+        break
 
-# printing quotes
-print("Hello , \"friend\"")
-print('Hello , "friend"')
-
-# foramt strings
-print(f"hello {name}")
+    # deciding to break the loop
+    if first_loop_flag:
+        break
+    else:
+        continue
